@@ -26,6 +26,9 @@ export class Server {
 
         app.get("/", async (req, res) => {
             res.render("index");
+        });
+        app.get("/contact", async(req, res)=> {
+            res.render("contact");
         })
 
         app.listen(port);
