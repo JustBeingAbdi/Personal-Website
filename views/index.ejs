@@ -50,49 +50,25 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header btn-info disabled">
-                <h4 class="modal-title">Contact Me</h4>
-                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title">Contact Us</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
               </div>
               <div class="modal-body">
-						<form method="post" action="#">
-							<div class="fields">
-								<div class="field">
-									<input type="text" name="name" id="name" placeholder="Name">
-								</div>
-								<div class="field">
-									<input type="email" name="email" id="email" placeholder="Email">
-								</div>
-								<div class="field">
-									<select name="department" id="department">
-										<option value="">Department</option>
-										<option value="sales">Sales</option>
-										<option value="tech">Tech Support</option>
-										<option value="null">/dev/null</option>
-									</select>
-								</div>
-								<div class="field">
-									<textarea name="message" id="message" placeholder="Message" rows="4"></textarea>
-								</div>
-								<div class="field">
-									<input type="checkbox" id="human" name="human"><label for="human">I'm a human</label>
-								</div>
-								<div class="field">
-									<label>But are you a robot?</label>
-									<input type="radio" id="robot_yes" name="robot"><label for="robot_yes">Yes</label>
-									<input type="radio" id="robot_no" name="robot"><label for="robot_no">No</label>
-								</div>
-							</div>
-							<ul class="actions special">
-								<li><a href="#" class="button">Get Started</a></li>
-							</ul>
-						</form>
-						<hr>
-                                                  </div>
+                <form id="signupform">
+                    
+                    <input type="text" class="form-control" id="name" placeholder="Full Name">
+                    
+                    <input type="email" class="form-control" id="semail" placeholder="Enter Email">
+                    
+                    <input type="password" class="form-control" id="spassword" placeholder="Enter Password">
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Login</button>
+                    <p id="signuptext"></p>
+                </form>
+              </div>
               <div class="modal-footer"><button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button></div>
             </div>
           </div>
         </div>
-</div>
 
 	</body>
 </html>
