@@ -20,7 +20,7 @@
                             <p>Contact Us</p>
                             <hr />
 						<h2>Extra Stuff!</h2>
-						<form method="post" action="#">
+						<form id="form">
 							<div class="fields">
 								<div class="field">
 									<input type="text" name="name" id="name" placeholder="Name" />
@@ -33,23 +33,23 @@
 										<option value="">Department</option>
 										<option value="sales">Sales</option>
 										<option value="tech">Tech Support</option>
-										<option value="null">/dev/null</option>
+                                 
 									</select>
 								</div>
 								<div class="field">
 									<textarea name="message" id="message" placeholder="Message" rows="4"></textarea>
 								</div>
 								<div class="field">
-									<input type="checkbox" id="human" name="human" /><label for="human">I'm a human</label>
+									<input required type="checkbox" id="human" name="human" /><label for="human">I'm a human</label>
 								</div>
 								<div class="field">
 									<label>But are you a robot?</label>
-									<input type="radio" id="robot_yes" name="robot" /><label for="robot_yes">Yes</label>
-									<input type="radio" id="robot_no" name="robot" /><label for="robot_no">No</label>
+                                    <input  type="radio" id="robot_yes" name="robot" /><label for="robot_yes">Yes</label>
+									<input required type="radio" id="robot_no" name="robot" /><label for="robot_no">No</label>
 								</div>
 							</div>
 							<ul class="actions special">
-								<li><a href="#" class="button">Get Started</a></li>
+								<li><button type="submit">Get Started</button>
 							</ul>
 						</form>
 						<hr />
@@ -75,7 +75,32 @@
 					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
 					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
 				}
-			</script>
+            </script>
+            <script>
+                function Contact() {
+    let name =  document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let department = document.getElementById("department").value;
+    let message = document.getElementById("message").value;
+    let data = {
+        name: name,
+        email: email,
+        department: department,
+        message: message
+    }
+    let request = new XMLHttpRequest();
+    request.open("POST", `/add`);
+    request.send(data);
+    window.location.assign("/?message=successfull");
+    
+}
+
+document.getElementById("form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    Contact();
+} );
+
+            </script>
 	
 
 	</body>
