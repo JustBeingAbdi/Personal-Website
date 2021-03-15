@@ -31,8 +31,8 @@
 								<div class="field">
 									<select name="department" id="department">
 										<option value="">Department</option>
-										<option value="sales">Sales</option>
-										<option value="tech">Tech Support</option>
+										<option value="Sales">Sales</option>
+										<option value="Tech-Support">Tech Support</option>
                                  
 									</select>
 								</div>
@@ -89,10 +89,9 @@
         message: message
     }
     let request = new XMLHttpRequest();
-    request.open("POST", `/add`);
+    request.open("POST", `/add?name=${name}&email=${email}&department=${department}&message=${message}`);
     request.send(data);
     window.location.assign("/?message=successfull");
-    
 }
 
 document.getElementById("form").addEventListener("submit", function(event) {
