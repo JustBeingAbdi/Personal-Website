@@ -5,10 +5,10 @@ import ejs from "ejs";
 import path from "path";
 import bodyparser from "body-parser";
 import session from "express-session";
-import * as Config from "./../lib/Config";
 import {Mail} from "./../Mail";
 import srs from "secure-random-string";
-
+import axios from "axios";
+import * as Config from "./../lib/Config";
 export class Server {
     public mail: Mail = new Mail();
     public async init(port): Promise<any> {
@@ -35,7 +35,6 @@ export class Server {
         })
         app.post("/add", async(req, res) => {
             let spid = srs({length:10});
-            let body = req.body;
             let name = req.query.name + ''.replace("%20", " ").replace("+", " ");
             let email = req.query.email + ''.replace("%20", " ").replace("+", " ");
             let department = req.query.department + ''.replace("%20", " ").replace("+", " ");
@@ -45,6 +44,19 @@ export class Server {
 
             this.mail.SendMailRoot('JustBeingAbdi', 'contact@justbeingabdi.cf', department, roothtml);
             this.mail.SendMail(email, name, 'RE: Support Ticket | Department: ' + department, emailhtml);
+
+
+            axios({
+                method: 'POST',
+                url: 'https://tickets.justbeingabdi.cf/api/tickets.json',
+                headers: `X-API-Key:  ${Config.osapikey}`,
+                data: {
+                    email: email,
+                    name: name,
+                    subject: department,
+                    message: message
+                }
+            })
             res.status(200).send({
                 message: "Affirmativ"
             });
