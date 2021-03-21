@@ -52,7 +52,7 @@ export class Server {
                 headers: `X-API-Key:  ${Config.osapikey}`,
                 data: {
                     email: email,
-                    name: name,
+                    name: name || 'Unknown',
                     subject: department,
                     message: message
                 }
