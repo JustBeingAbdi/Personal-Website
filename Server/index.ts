@@ -49,7 +49,9 @@ export class Server {
             axios({
                 method: 'POST',
                 url: 'https://tickets.justbeingabdi.cf/api/tickets.json',
-                headers: `X-API-Key:  ${Config.osapikey}`,
+                headers: {
+                    "X-API-Key: ": Config.osapikey
+                },
                 data: {
                     email: email,
                     name: name || 'Unknown',
